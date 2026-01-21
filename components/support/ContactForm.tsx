@@ -4,6 +4,7 @@ import React, { useState, ChangeEvent, MouseEvent } from "react";
 import ModalWrapper from "@/components/common/modals/ModalWrapper"; // Ensure .tsx
 import { closeModal } from "@/store/modalSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
+import { toast } from "react-toastify";
 
 interface ContactFormData {
   name: string;
@@ -82,22 +83,44 @@ export default function ContactUsForm() {
 
     setLoading(true);
 
-    // if (file) {
-    //   var data = new FormData();
-    //   data.append("imageFile", file);
-    //   const fileJson = await dispatch(uploadFileApi(data));
-    //   if (fileJson.error) {
-    //     setLoading(false);
-    //     setErrors(prev => ({ ...prev, file: "File upload failed. Please try again." }));
-    //     return;
-    //   }
-    //   formData.file = fileJson[0].location;
-    //   dispatch(contactUsApi(formData));
-    // } else {
-    //   dispatch(contactUsApi(formData));
-    // }
+    try {
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('email', formData.email);
+        if (formData.phone) formDataToSend.append('phone', formData.phone);
+        formDataToSend.append('details', formData.details);
+        if (file) {
+            formDataToSend.append('file', file);
+        }
 
-    setLoading(false);
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            body: formDataToSend,
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            toast.success("Message sent successfully!");
+            dispatch(closeModal());
+            // Reset form
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                details: ""
+            });
+            setFile(null);
+            setFileName("");
+        } else {
+            toast.error(result.error || "Failed to send message.");
+        }
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        toast.error("An error occurred. Please try again.");
+    } finally {
+        setLoading(false);
+    }
   };
 
   const handleCancel = () => {
