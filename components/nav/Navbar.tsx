@@ -1,20 +1,24 @@
 "use client";
 import Link from 'next/link';
-import { MagnifyingGlassIcon, UserIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { UserIcon } from '@heroicons/react/24/outline';
 import { openModal } from '@/store/modalSlice';
 import { useAppDispatch } from '@/store/store';
 
 export default function Navbar() {
   const dispatch = useAppDispatch();
+  
+  // Update: Defined links with specific IDs
   const navLinks = [
-    'How It Works', 'Doctors', 'Testimonials'
+    { name: 'How It Works', href: '/#how-it-works' },
+    { name: 'Doctors', href: '/#doctors' },
+    { name: 'Testimonials', href: '/#testimonials' }
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 py-4">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-8">
-          {/* Logo - SVG from source */}
+          {/* Logo */}
           <div className="flex-shrink-0 flex items-center cursor-pointer">
             <Link href="/">
               <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,19 +31,27 @@ export default function Navbar() {
           <div className="hidden xl:flex space-x-6">
             {navLinks.map((link) => (
               <Link
-                key={link}
-                href="#"
+                key={link.name}
+                href={link.href}
                 className="text-[13px] font-semibold text-gray-900 hover:text-gray-600 transition-colors"
               >
-                {link}
+                {link.name}
               </Link>
             ))}
             <Link
-              key={"Contact us"}
-              href="#contact"
-              onClick={() =>
-                dispatch(openModal({ modalType: "ContactUsForm" as any }))
-              }
+              key="FAQs"
+              href="/faq" 
+              className="text-[13px] font-semibold text-gray-900 hover:text-gray-600 transition-colors"
+            >
+              FAQs
+            </Link>
+            <Link
+              key="Contact us"
+              href="#contact" // Assuming you might have a footer ID or modal trigger
+              onClick={(e) => {
+                e.preventDefault(); // Prevent jump if strictly modal
+                dispatch(openModal({ modalType: "ContactUsForm" as any }));
+              }}
               className="text-[13px] font-semibold text-gray-900 hover:text-gray-600 transition-colors"
             >
               Contact us
@@ -48,7 +60,7 @@ export default function Navbar() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            <button className="text-sm font-semibold hidden md:block">Log in</button>
+            <button className="text-sm font-semibold hidden">Log in</button>
             <UserIcon className="h-6 w-6 md:hidden" />
           </div>
         </div>

@@ -21,12 +21,23 @@ export default function Home() {
       <Hero />
       <MemberShipIncluded />
       <ProductExample />
-      <FeaturesSection />
+      
+      {/* 1. How It Works Target */}
+      <section id="how-it-works">
+        <FeaturesSection />
+      </section>
+      
       <ValueProps />
 
-      <Experts />
+      {/* 2. Doctors Target */}
+      <section id="doctors">
+        <Experts />
+      </section>
       
-      <Testimonials />
+      {/* 3. Testimonials Target */}
+      <section id="testimonials">
+        <Testimonials />
+      </section>
 
       <Footer />
     </main>

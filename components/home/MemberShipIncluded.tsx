@@ -92,7 +92,7 @@ export default function MemberShipIncluded() {
 
             <div className="mt-auto flex gap-2">
                <Link 
-                 href="https://start.ro.co/fdalgd/"
+                 href="/weight-loss/ozempic"
                  className="inline-flex items-center justify-center bg-black text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-gray-800 transition w-full md:w-auto"
                >
                  Get started

@@ -31,7 +31,7 @@ export default function Footer() {
                               dispatch(openModal({ modalType: "ContactUsForm" as any }))
                             } className="hover:text-gray-300">Contact us</a></li>
               <li><a href="/faq" className="hover:text-gray-300">FAQ</a></li>
-              <li><a href="/pricing" className="hover:text-gray-300">Pricing</a></li>
+              {/* <li><a href="/pricing" className="hover:text-gray-300">Pricing</a></li> */}
             </ul>
           </div>
           <div>
@@ -45,9 +45,6 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">2026 © All rights reserved, MetaFit</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-             <img src="https://static.legitscript.com/seals/3722005.png" alt="LegitScript" className="h-10 opacity-80" />
-          </div>
         </div>
       </div>
     </footer>

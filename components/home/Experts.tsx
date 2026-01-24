@@ -2,16 +2,16 @@ import Image from 'next/image';
 
 const experts = [
   {
-    name: "Dr. Melynda Barnes, MD",
-    role: "Chief Medical Officer",
-    desc: "Triple board-certified Obesity Medicine, Facial Plastic and Reconstructive Surgeon.",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/5LnL1dqkvVqMJypFBfvi5M/a641c863a307a9e25c4e8afbf69ef341/expert-1.jpg?fm=webp&q=80&w=1280"
+    name: "Dr. Arjun Nair, MD, DM",
+    role: "Head of Clinical AI Strategy",
+    desc: "Double board-certified Cardiologist and Clinical Informaticist specializing in predictive heart health models.",
+    img: "/assets/arjun_nair.png"
   },
   {
-    name: "Dr. Raoul Manalac, MD",
-    role: "Senior Director, Clinical Strategy",
-    desc: "Board-certified Internal Medicine Physician.",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/6uJSDOs1dOmE20tooRrhPk/c166b22cb2d79f017b031abb99bcf3c8/raul.jpg?fm=webp&q=80&w=1280"
+    name: "Dr. Lakshmi Iyer, MBBS, MPH",
+    role: "VP of Medical Affairs",
+    desc: "Public Health specialist and Diabetologist with a focus on scalable AI solutions for metabolic weight loss.",
+    img: "/assets/lakshmi_iyer.png"
   },
   {
     name: "Dr. Nitin Vaswani, MD",
@@ -35,7 +35,7 @@ export default function Experts() {
               Meet our advisors →
             </button>
           </div>
-          
+
           <div className="lg:w-2/3 flex overflow-x-auto gap-6 pb-6 no-scrollbar">
             {experts.map((e, i) => (
               <div key={i} className="min-w-[300px] border rounded-2xl overflow-hidden">
