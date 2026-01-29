@@ -11,17 +11,6 @@ const features = [
     )
   },
   {
-    text: "Dedicated insurance concierge",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <path d="M7.5 10.25c-.41 0-.75.34-.75.75s.34.75.75.75h8c.41 0 .75-.34.75-.75s-.34-.75-.75-.75H7.5Z" fill="#1a1a1a"/>
-        <path d="M10.93 15.25h-3.43c-.41 0-.75.34-.75.75s.34.75.75.75h3.43c.41 0 .75-.34.75-.75s-.34-.75-.75-.75Z" fill="#1a1a1a"/>
-        <path d="M10.5 21.25h-5.5c-.69,0-1.25-.56-1.25-1.25V5.5c0-.69.56-1.25,1.25-1.25h1.89c.31.87 1.14 1.5 2.11 1.5h5c.98,0 1.8-.63 2.11-1.5h1.89c.69,0,1.25.56,1.25,1.25v7c0 .41.34.75.75.75s.75-.34.75-.75v-7c0-1.52-1.23-2.75-2.75-2.75h-1.89c-.31-.87-1.14-1.5-2.11-1.5h-5c-.98,0-1.8.63-2.11 1.5h-1.89c-1.52,0-2.75,1.23-2.75,2.75v14.5c0,1.52,1.23,2.75,2.75,2.75h5.5c.41,0,.75-.34.75-.75s-.34-.75-.75-.75ZM9 2.75h5c.41,0,.75.34.75.75s-.34.75-.75.75h-5c-.41,0-.75-.34-.75-.75s.34-.75.75-.75Z" fill="#1a1a1a"/>
-        <path d="M21.48 15.42c-.32-.26-.79-.22-1.06.1l-4.47 5.37-1.92-1.92c-.29-.29-.77-.29-1.06,0s-.29.77,0,1.06l2.5 2.5c.14.14.33.22.53.22.01,0,.02,0,.03,0,.21,0,.41-.11.54-.27l5-6c.27-.32.22-.79-.1-1.06Z" fill="#1a1a1a"/>
-      </svg>
-    )
-  },
-  {
     text: "Unlimited provider messaging",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="w-6 h-6">
@@ -40,7 +29,7 @@ const features = [
     )
   },
   {
-    text: "1:1 health coaching",
+    text: "1:1 health & diet coaching",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="w-6 h-6">
         <path d="M11.61 12.48c.32.14.66.21 1.01.21s.69-.07 1.01-.21c3.18-1.41 5.14-3.85 5.24-6.51.07-1.81-.74-3.39-2.12-4.14-1.71-.92-3.23-.4-4.13.23-.89-.64-2.42-1.16-4.13-.23-1.38.75-2.19 2.33-2.12 4.14.1 2.66 2.06 5.1 5.24 6.51ZM9.2 3.15c.43-.24.83-.32 1.19-.32.95 0 1.58.63 1.67.73.14.16.34.24.55.25.21-.02.41-.09.56-.24.12-.13 1.26-1.28 2.86-.41.86.46 1.38 1.55 1.33 2.76-.08 2.08-1.71 4.02-4.35 5.2-.25.11-.54.11-.79 0-2.64-1.17-4.27-3.12-4.35-5.2-.05-1.21.48-2.29 1.33-2.76Z" fill="#1a1a1a"/>
@@ -60,7 +49,8 @@ export default function MemberShipIncluded() {
           <div className="w-full lg:w-1/2">
             <div className="relative aspect-[4/3] lg:aspect-square w-full rounded-3xl overflow-hidden bg-gray-100">
               <Image 
-                src="https://imgctf--assets.ro.co/jj2wf7627pjc/2CCt5SbNSzp62IHG8RgQ5y/24d652d05ffd6cf37ba1378fd95f0b72/Ana_Cuba_Montanya_Ozempic.png?fm=webp&q=80&w=1280" 
+                src="/assets/ozempic.png
+                " 
                 alt="MetaFit membership benefits" 
                 fill 
                 className="object-cover"
@@ -73,7 +63,7 @@ export default function MemberShipIncluded() {
             
             <div className="mb-10">
               <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.1] tracking-tight text-[#1a1a1a]">
-                What's included in the MetaFit Body membership?
+                What's included in the MetaFit membership?
               </h2>
             </div>
 
@@ -92,7 +82,7 @@ export default function MemberShipIncluded() {
 
             <div className="mt-auto flex gap-2">
                <Link 
-                 href="/weight-loss/ozempic"
+                 href="/get-started"
                  className="inline-flex items-center justify-center bg-black text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-gray-800 transition w-full md:w-auto"
                >
                  Get started

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const marqueeItems = [
   {
@@ -92,9 +93,11 @@ export default function Hero() {
               <h2 className="text-white text-3xl md:text-5xl font-light leading-tight mb-6">
                 India's most trusted <br /> weight loss partner.<br />
               </h2>
-              <button className="bg-white text-black px-8 py-3 rounded-full font-semibold text-lg w-max hover:bg-gray-100 transition flex items-center gap-2">
-                Take quiz <span>→</span>
-              </button>
+              <Link href="/get-started">
+                <button className="bg-white cursor-pointer text-black px-8 py-3 rounded-full font-semibold text-lg w-max hover:bg-gray-100 transition flex items-center gap-2">
+                  Start Plan <span>→</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

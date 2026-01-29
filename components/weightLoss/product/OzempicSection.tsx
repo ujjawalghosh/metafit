@@ -113,7 +113,7 @@ export default function OzempicSection() {
             {/* CTA Button */}
             <div className="mb-12">
                <Link 
-                 href="https://start.ro.co/fdalgd/"
+                 href="/get-started"
                  className="inline-flex items-center justify-center bg-black text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-gray-800 transition w-full md:w-auto"
                >
                  Get started

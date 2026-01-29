@@ -1,68 +1,72 @@
-import Image from 'next/image';
+import { 
+  ChatBubbleLeftRightIcon, 
+  ChartBarIcon, 
+  BeakerIcon, 
+  TruckIcon 
+} from '@heroicons/react/24/outline';
 
 const features = [
   {
     title: "Chat with a provider 24/7",
-    image: "https://imgctf--assets.ro.co/jj2wf7627pjc/7iPIuS36H0Y4laUarcz5rm/00e5ada54660c31b0b92747a7507e33c/Ana_Cuba_Kassi_portrait_message.png?fm=webp&q=80&w=1280",
-    alt: "Patient chatting on phone"
+    description: "Unlimited messaging with your dedicated care team anytime you need support.",
+    icon: ChatBubbleLeftRightIcon,
   },
   {
     title: "Manage goals in one place",
-    image: "https://imgctf--assets.ro.co/jj2wf7627pjc/1m18L1b4ofp7qfSJqO3IOH/0df959d84e19a0d7878c0bef797f9409/Jenna-UI-stock-weight-loss.png?fm=webp&q=80&w=1280",
-    alt: "MetaFit app interface showing weight loss goals"
+    description: "Track your weight loss progress and manage your treatment plan easily.",
+    icon: ChartBarIcon,
   },
   {
-    title: "Clinically-proven, FDA-approved treatments",
-    image: "https://imgctf--assets.ro.co/jj2wf7627pjc/2VvoQn4aalvbZhrWgqrjfM/46e68956ea30c49d080188a9d800c1fa/Zepbound_Ozempic_Wegovy_pen_bouquet.png?fm=webp&q=80&w=1280",
-    alt: "Bouquet of GLP-1 medications"
+    title: "Clinically-proven, FDA-approved",
+    description: "Access effective, science-backed treatments prescribed by licensed providers.",
+    icon: BeakerIcon,
   },
   {
     title: "Fast, discreet shipping",
-    image: "https://imgctf--assets.ro.co/jj2wf7627pjc/3Wh2bqVooQ1LrGxUgU8yxy/d62738370cd10a4d43b30d121d000f5c/fast.jpg?fm=webp&q=80&w=1280",
-    alt: "Person holding shipping box"
+    description: "Your medication arrives quickly in unmarked packaging for your privacy.",
+    icon: TruckIcon,
   }
 ];
 
 export default function ValueProps() {
   return (
-    <section className="bg-gray-50 py-6 lg:py-8 overflow-hidden">
+    <section className="bg-[#f4f2ed] py-20">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-
-          {/* Left: Sticky Header */}
-
-          <div className="lg:sticky lg:top-32">
-            <h2 className="text-xl pb-4 md:text-2xl lg:text-4xl font-bold leading-[1.1] tracking-tight text-[#1a1a1a]">
-              100% online,<br />
-              100% convenient
-            </h2>
-
-            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="snap-center flex-shrink-0 w-[85vw] sm:w-[400px] md:w-[450px] relative h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden group"
-                >
-                  <Image
-                    src={feature.image}
-                    alt={feature.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  {/* Text Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-0 left-0 p-8 w-full">
-                    <h3 className="text-white text-3xl font-bold leading-tight tracking-tight">
-                      {feature.title}
-                    </h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-
+        
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#1a1a1a] mb-6">
+            100% online,<br />
+            100% convenient
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            We've removed the hassle of waiting rooms and pharmacy lines so you can focus on your health.
+          </p>
         </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              key={index}
+              className="flex flex-col items-center text-center p-6 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-sm"
+            >
+              {/* Icon Circle */}
+              <div className="h-16 w-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 text-[#054742]">
+                <feature.icon className="h-8 w-8" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-[#1a1a1a] mb-3 leading-snug">
+                {feature.title}
+              </h3>
+              
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

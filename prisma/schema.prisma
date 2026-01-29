@@ -1,14 +1,15 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
 }
+        
 
 model ContactSubmission {
   id        Int      @id @default(autoincrement())
@@ -18,4 +19,15 @@ model ContactSubmission {
   details   String
   fileUrl   String?
   createdAt DateTime @default(now())
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  email       String
+  phone       String
+  gender      String
+  weightGoal  String
+  createdAt   DateTime @default(now())
 }

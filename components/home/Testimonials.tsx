@@ -5,34 +5,34 @@ import Image from 'next/image';
 
 const testimonials = [
   {
-    name: "Michael",
+    name: "Rahul",
     quote: "Works wonders and their service is amazing",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/1Mze9KGqOaquqTxzqyJ8vf/717d783989ff79495d18fdfa802c3157/6.png?fm=webp&q=80&w=828",
+    img: "/assets/rahul.jpeg",
   },
   {
-    name: "Chaleeta",
+    name: "Anshu",
     quote: "Since losing 51 pounds through Ro, my day-to-day life has changed dramatically.",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/5bAOu73eZK70cSxlSUBBWa/5e4ac6fef9a2979a3622935668b2bb64/videoframe_2156.png?fm=webp&q=80&w=828",
+    img: "/assets/Anshu.jpeg",
   },
   {
-    name: "Gordon",
+    name: "Mukesh",
     quote: "Someone is always there to walk you through the program—super easy and fast!",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/oE41RxYKeoGOmt5Omociq/9de5d1588ec1940d9c766225c95b17fb/videoframe_1648.png?fm=webp&q=80&w=828",
+    img: "/assets/Mukesh.jpeg",
   },
   {
-    name: "Rob",
+    name: "Sudhir",
     quote: "My experience with MetaFit has been life changing. They were very easy to work with.",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/1BclyAXH1a1A2WKAzLI4i6/1de4c5ebd7e7d41fb43fc07a5847e3e8/9.png?fm=webp&q=80&w=828",
+    img: "/assets/sudheer.jpeg",
   },
   {
-    name: "Valjean",
+    name: "Amit",
     quote: "I can do the things that I want without feeling like I’m getting in my own way.",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/4Zoeohihl09mhX03eocxFq/0d76f2ce269752bef1748c9a9d87a6e5/8.png?fm=webp&q=80&w=828",
+    img: "/assets/amit.jpeg",
   },
   {
-    name: "Alan",
+    name: "Aakash",
     quote: "The convenience and online support made this journey sustainable for me.",
-    img: "https://imgctf--assets.ro.co/jj2wf7627pjc/4FuzjI72ZCqWgyGydV23qN/9f294b884533c96d4012a059273b3189/7.png?fm=webp&q=80&w=828",
+    img: "/assets/Aakash.jpeg",
   },
 ];
 
