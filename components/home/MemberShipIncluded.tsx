@@ -49,8 +49,7 @@ export default function MemberShipIncluded() {
           <div className="w-full lg:w-1/2">
             <div className="relative aspect-[4/3] lg:aspect-square w-full rounded-3xl overflow-hidden bg-gray-100">
               <Image 
-                src="/assets/ozempic.png
-                " 
+                src="https://imgctf--assets.ro.co/jj2wf7627pjc/2CCt5SbNSzp62IHG8RgQ5y/24d652d05ffd6cf37ba1378fd95f0b72/Ana_Cuba_Montanya_Ozempic.png?fm=webp&q=80&w=1280" 
                 alt="MetaFit membership benefits" 
                 fill 
                 className="object-cover"

@@ -44,7 +44,7 @@ export default function HowItWorks() {
     <section className="relative bg-white overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -52,7 +52,7 @@ export default function HowItWorks() {
           className="w-full h-full object-cover"
         >
           <source src="https://vidctf--assets.ro.co/jj2wf7627pjc/a7p8D1yeTcrUyuc5emE1s/2bd32a480645b30b0f39603c43dbccde/Banner_video_for_website_V01_wider_SMALLER.mp4" type="video/mp4" />
-        </video>
+        </video> */}
         {/* White Overlay to make text readable and blend with next section */}
         <div className="absolute inset-0 bg-white/90 lg:bg-white/80" />
       </div>

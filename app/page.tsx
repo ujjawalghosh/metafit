@@ -19,13 +19,13 @@ export default function Home() {
     <main className="min-h-screen bg-white font-sans text-[#1a1a1a]">
       <Navbar />
       <Hero />
-      <MemberShipIncluded />
-      <ProductExample />
-      
       {/* 1. How It Works Target */}
       <section id="how-it-works">
         <FeaturesSection />
       </section>
+      <ProductExample />
+
+      <MemberShipIncluded />
       
       <ValueProps />
 
