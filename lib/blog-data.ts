@@ -5,6 +5,8 @@ export interface BlogPost {
   content: string;
   date: string;
   author: string;
+  imageUrl: string;
+  readTime: string;
 }
 
 export const blogs: BlogPost[] = [
@@ -26,7 +28,9 @@ export const blogs: BlogPost[] = [
       <p>We understand the unique challenges faced by Indians when trying to lose weight, from carbohydrate-heavy diets to genetic predispositions. MetaFit combines modern medicine with lifestyle coaching for sustainable results.</p>
     `,
     date: "2024-05-01",
-    author: "MetaFit Medical Team"
+    author: "MetaFit Medical Team",
+    imageUrl: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800",
+    readTime: "5 min read"
   },
   {
     title: "The Ultimate Indian Diet Plan for Effective Weight Loss",
@@ -47,7 +51,9 @@ export const blogs: BlogPost[] = [
       <p>MetaFit doesn't believe in starvation diets. Our nutritionists work with you to create a meal plan that fits your lifestyle, incorporating Indian staples while ensuring a calorie deficit for weight loss.</p>
     `,
     date: "2024-05-05",
-    author: "MetaFit Nutrition Team"
+    author: "MetaFit Nutrition Team",
+    imageUrl: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800",
+    readTime: "6 min read"
   },
   {
     title: "Overcoming Weight Loss Plateaus: Tips for the Indian Lifestyle",
@@ -68,7 +74,9 @@ export const blogs: BlogPost[] = [
       <p>When lifestyle changes aren't enough, medical interventions like GLP-1 through MetaFit can provide the necessary push to overcome metabolic resistance and continue losing weight safely.</p>
     `,
     date: "2024-05-10",
-    author: "MetaFit Health Coaches"
+    author: "MetaFit Health Coaches",
+    imageUrl: "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&q=80&w=800",
+    readTime: "4 min read"
   },
   {
     title: "MetaFit vs. Traditional Weight Loss Centers in India",
@@ -90,7 +98,9 @@ export const blogs: BlogPost[] = [
       <p>Our goal is long-term health, not just a quick fix on the scale. By addressing the biological root causes of weight gain, MetaFit ensures that the weight you lose stays off.</p>
     `,
     date: "2024-05-15",
-    author: "MetaFit Editorial Team"
+    author: "MetaFit Editorial Team",
+    imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+    readTime: "7 min read"
   },
   {
     title: "How to Manage PCOS and Weight Loss in India",
@@ -110,7 +120,9 @@ export const blogs: BlogPost[] = [
       <p>MetaFit offers personalized programs for women with PCOS, combining medical treatments, dietary guidance, and emotional support to tackle the unique challenges they face.</p>
     `,
     date: "2024-05-20",
-    author: "MetaFit Medical Team"
+    author: "MetaFit Medical Team",
+    imageUrl: "https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&q=80&w=800",
+    readTime: "6 min read"
   },
   {
     title: "Incorporating Yoga and MetaFit for Holistic Weight Loss",
@@ -127,7 +139,9 @@ export const blogs: BlogPost[] = [
       <p>We recommend combining 30 minutes of daily Yoga with the personalized nutrition and medical plan provided by MetaFit. This holistic approach ensures both physical and mental well-being during your weight loss journey.</p>
     `,
     date: "2024-05-25",
-    author: "MetaFit Fitness Experts"
+    author: "MetaFit Fitness Experts",
+    imageUrl: "https://images.unsplash.com/photo-1599422314077-f4dfdaa4cd09?auto=format&fit=crop&q=80&w=800",
+    readTime: "8 min read"
   },
   {
     title: "Debunking Common Weight Loss Myths in India",
@@ -147,7 +161,9 @@ export const blogs: BlogPost[] = [
       <p>MetaFit relies on scientific evidence, not fads. Whether it's through behavioral therapy, diet modification, or GLP-1 medications, we focus on what actually works for the Indian demographic.</p>
     `,
     date: "2024-05-30",
-    author: "MetaFit Editorial Team"
+    author: "MetaFit Editorial Team",
+    imageUrl: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=800",
+    readTime: "5 min read"
   },
   {
     title: "Navigating Indian Festivals While on a Weight Loss Journey",
@@ -168,7 +184,9 @@ export const blogs: BlogPost[] = [
       <p>MetaFit coaches understand cultural contexts. We provide practical advice on how to navigate social gatherings and festivals, ensuring you enjoy the celebrations without guilt or significant setbacks.</p>
     `,
     date: "2024-06-04",
-    author: "MetaFit Nutrition Team"
+    author: "MetaFit Nutrition Team",
+    imageUrl: "https://images.unsplash.com/photo-1614713568393-01825dc9eb3e?auto=format&fit=crop&q=80&w=800",
+    readTime: "4 min read"
   },
   {
     title: "Success Stories: How MetaFit is Changing Lives in India",
@@ -185,7 +203,9 @@ export const blogs: BlogPost[] = [
       <p>These success stories highlight the effectiveness of treating obesity as a complex medical issue rather than just a lack of willpower. MetaFit provides the tools, support, and medical interventions necessary for lasting change.</p>
     `,
     date: "2024-06-09",
-    author: "MetaFit Community"
+    author: "MetaFit Community",
+    imageUrl: "https://images.unsplash.com/photo-1555243896-771a8239d202?auto=format&fit=crop&q=80&w=800",
+    readTime: "5 min read"
   },
   {
     title: "Is GLP-1 Right for You? A Guide for Indian Patients",
@@ -202,6 +222,8 @@ export const blogs: BlogPost[] = [
       <p>If prescribed, GLP-1 is part of a comprehensive program. You can expect reduced appetite, but you must commit to dietary changes and regular exercise for optimal results. MetaFit provides continuous monitoring to manage any side effects and track progress.</p>
     `,
     date: "2024-06-14",
-    author: "MetaFit Medical Team"
+    author: "MetaFit Medical Team",
+    imageUrl: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800",
+    readTime: "7 min read"
   }
 ];
