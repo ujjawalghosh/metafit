@@ -1,170 +1,119 @@
-import { notFound } from 'next/navigation';
-import { blogs } from '@/lib/blog-data';
-import Navbar from '@/components/nav/Navbar';
-import Footer from '@/components/nav/Footer';
-import { Metadata } from 'next';
-import Link from 'next/link';
+// app/blog/[slug]/page.tsx
 
-// Generate static parameters for all known blog slugs
-export async function generateStaticParams() {
-  return blogs.map((blog) => ({
-    slug: blog.slug,
-  }));
+import { blogs } from "@/lib/blog-data";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import BlogCard from "@/components/blog/BlogCard";
+
+export function generateStaticParams() {
+  return blogs.map((post) => ({ slug: post.slug }));
 }
 
-// Generate dynamic metadata for SEO
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = await params;
-  const blog = blogs.find((b) => b.slug === slug);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params; // ✅ await params first
 
-  if (!blog) {
-    return {
-      title: 'Post Not Found | MetaFit',
-    };
-  }
+  const post = blogs.find((b) => b.slug === slug);
+  if (!post) notFound();
 
-  return {
-    title: `${blog.title} | MetaFit Blog`,
-    description: blog.excerpt,
-    alternates: {
-      canonical: `https://www.joinmeta.fit/blog/${blog.slug}`,
-    },
-    openGraph: {
-      title: blog.title,
-      description: blog.excerpt,
-      type: 'article',
-      publishedTime: blog.date,
-      authors: [blog.author],
-      images: [
-        {
-          url: blog.imageUrl,
-          width: 800,
-          height: 600,
-          alt: blog.title,
-        },
-      ],
-    },
-  };
-}
-
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
-  const blog = blogs.find((b) => b.slug === slug);
-
-  if (!blog) {
-    notFound();
-  }
+  const related = blogs.filter((b) => b.slug !== post.slug).slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-white font-sans text-[#1a1a1a]">
-      <Navbar />
-
-      <article className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-
-        {/* Breadcrumb / Back Link */}
-        <div className="mb-8">
-          <Link href="/blog" className="text-blue-600 hover:text-blue-800 flex items-center text-sm font-semibold transition-colors">
-            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    <main className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <div className="relative h-80 md:h-[480px] overflow-hidden">
+        <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14 max-w-4xl mx-auto">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1 text-white/70 hover:text-white text-sm mb-4 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Blog
           </Link>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+            {post.title}
+          </h1>
+        </div>
+      </div>
+
+      {/* Meta bar */}
+      <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-3 text-sm text-gray-500">
+            <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs">
+              {post.author.charAt(0)}
+            </div>
+            <span className="font-medium text-gray-700">{post.author}</span>
+            <span className="text-gray-300">•</span>
+            <span>
+              {new Date(post.date).toLocaleDateString("en-IN", {
+                day: "numeric", month: "long", year: "numeric",
+              })}
+            </span>
+          </div>
+          <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">
+            {post.readTime}
+          </span>
+        </div>
+      </div>
+
+      {/* Article body */}
+      <article className="max-w-3xl mx-auto px-6 py-14">
+        <div className="border-l-4 border-emerald-500 bg-emerald-50 rounded-r-xl px-6 py-4 mb-10 text-emerald-800 text-lg font-medium italic">
+          {post.excerpt}
         </div>
 
-        {/* Header */}
-        <header className="mb-12 text-center md:text-left">
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
-            {blog.title}
-          </h1>
-          <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 text-gray-500 font-medium mb-8">
-            <div className="flex items-center">
-               <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">{blog.author}</span>
-            </div>
-            <span className="hidden md:inline-block w-1 h-1 bg-gray-300 rounded-full"></span>
-            <time dateTime={blog.date}>
-              {new Date(blog.date).toLocaleDateString('en-IN', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
-            <span className="hidden md:inline-block w-1 h-1 bg-gray-300 rounded-full"></span>
-            <span>{blog.readTime}</span>
-          </div>
-
-          {blog.imageUrl && (
-            <div className="w-full h-64 md:h-96 relative rounded-2xl overflow-hidden mb-12 shadow-md">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={blog.imageUrl}
-                alt={blog.title}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          )}
-        </header>
-
-        {/* Content */}
-        {/* Note: Using dangerouslySetInnerHTML because we are trusting our own static HTML string in blog-data.ts */}
         <div
-          className="prose prose-lg prose-blue max-w-none
-                     prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900
-                     prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:pb-2 prose-h2:border-gray-100
-                     prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
-                     prose-li:text-gray-700 prose-ul:mb-6 prose-ol:mb-6
-                     prose-strong:text-gray-900"
-          dangerouslySetInnerHTML={{ __html: blog.content }}
+          className="
+            prose prose-lg max-w-none
+            prose-headings:font-extrabold prose-headings:text-gray-900 prose-headings:mt-10 prose-headings:mb-4
+            prose-h2:text-2xl prose-h2:border-b prose-h2:border-gray-100 prose-h2:pb-3
+            prose-p:text-gray-600 prose-p:leading-relaxed
+            prose-li:text-gray-600 prose-li:leading-relaxed
+            prose-strong:text-gray-800
+            prose-blockquote:border-l-4 prose-blockquote:border-emerald-400 prose-blockquote:bg-gray-50 prose-blockquote:rounded-r-lg prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:text-gray-700 prose-blockquote:not-italic
+            prose-ol:space-y-2 prose-ul:space-y-2
+          "
+          dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        {/* CTA Section */}
-        <div className="mt-16 bg-blue-50 rounded-2xl p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to start your weight loss journey?</h3>
-          <p className="text-gray-600 mb-6">Join thousands of Indians achieving their goals with MetaFit's medical approach.</p>
-          <Link href="/get-started" className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
-             Get Started Today
-          </Link>
-        </div>
-
-        {/* Related Posts */}
-        <div className="mt-20 pt-10 border-t border-gray-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">Read Next</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {blogs
-              .filter((b) => b.slug !== slug)
-              .sort(() => 0.5 - Math.random())
-              .slice(0, 2)
-              .map((relatedBlog) => (
-                <Link
-                  key={relatedBlog.slug}
-                  href={`/blog/${relatedBlog.slug}`}
-                  className="flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100"
-                >
-                  {relatedBlog.imageUrl && (
-                    <div className="w-full h-40 relative overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={relatedBlog.imageUrl}
-                        alt={relatedBlog.title}
-                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <div className="p-4 flex flex-col flex-grow">
-                    <h4 className="text-lg font-bold mb-2 text-gray-900 line-clamp-2 hover:text-blue-600 transition-colors">
-                      {relatedBlog.title}
-                    </h4>
-                    <p className="text-sm text-gray-600 line-clamp-2">
-                      {relatedBlog.excerpt}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-          </div>
+        {/* CTA */}
+        <div className="mt-16 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-8 md:p-12 text-white text-center">
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-3">
+            Ready to Start Your Weight Loss Journey?
+          </h3>
+          <p className="text-emerald-100 mb-6 max-w-md mx-auto">
+            Get a personalized medical assessment from MetaFit's expert doctors — tailored for the Indian lifestyle.
+          </p>
+          <a
+            href="/get-started"
+            className="inline-block bg-white text-emerald-700 font-bold px-8 py-3 rounded-full hover:bg-emerald-50 transition-colors shadow-lg"
+          >
+            Book a Free Consultation
+          </a>
         </div>
       </article>
 
-      <Footer />
+      {/* Related posts */}
+      {related.length > 0 && (
+        <section className="max-w-6xl mx-auto px-6 pb-20">
+          <h2 className="text-xs font-bold tracking-widest uppercase text-emerald-600 mb-6">
+            More Articles
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {related.map((p) => (
+              <BlogCard key={p.slug} post={p} />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

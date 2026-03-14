@@ -9,7 +9,7 @@ export default function Navbar() {
   
   // Update: Defined links with specific IDs
   const navLinks = [
-    { name: 'How It Works', href: '/#how-it-works' },
+    { name: 'Home', href: '/' },
     { name: 'Doctors', href: '/#doctors' },
     { name: 'Testimonials', href: '/#testimonials' },
     { name: 'Blog', href: '/blog' }
