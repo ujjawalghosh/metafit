@@ -35,6 +35,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       type: 'article',
       publishedTime: blog.date,
       authors: [blog.author],
+      images: [
+        {
+          url: blog.imageUrl,
+          width: 800,
+          height: 600,
+          alt: blog.title,
+        },
+      ],
     },
   };
 }
@@ -68,7 +76,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
             {blog.title}
           </h1>
-          <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 text-gray-500 font-medium">
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 text-gray-500 font-medium mb-8">
             <div className="flex items-center">
                <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">{blog.author}</span>
             </div>
@@ -81,7 +89,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 day: 'numeric'
               })}
             </time>
+            <span className="hidden md:inline-block w-1 h-1 bg-gray-300 rounded-full"></span>
+            <span>{blog.readTime}</span>
           </div>
+
+          {blog.imageUrl && (
+            <div className="w-full h-64 md:h-96 relative rounded-2xl overflow-hidden mb-12 shadow-md">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={blog.imageUrl}
+                alt={blog.title}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          )}
         </header>
 
         {/* Content */}
@@ -103,6 +124,43 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <Link href="/get-started" className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
              Get Started Today
           </Link>
+        </div>
+
+        {/* Related Posts */}
+        <div className="mt-20 pt-10 border-t border-gray-100">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8">Read Next</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {blogs
+              .filter((b) => b.slug !== slug)
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 2)
+              .map((relatedBlog) => (
+                <Link
+                  key={relatedBlog.slug}
+                  href={`/blog/${relatedBlog.slug}`}
+                  className="flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100"
+                >
+                  {relatedBlog.imageUrl && (
+                    <div className="w-full h-40 relative overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={relatedBlog.imageUrl}
+                        alt={relatedBlog.title}
+                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h4 className="text-lg font-bold mb-2 text-gray-900 line-clamp-2 hover:text-blue-600 transition-colors">
+                      {relatedBlog.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {relatedBlog.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
       </article>
 

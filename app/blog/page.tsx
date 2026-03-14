@@ -32,6 +32,16 @@ export default function BlogListingPage() {
               href={`/blog/${blog.slug}`}
               className="flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100"
             >
+              {blog.imageUrl && (
+                <div className="w-full h-48 relative overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={blog.imageUrl}
+                    alt={blog.title}
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
               <div className="p-6 flex flex-col flex-grow">
                 <div className="text-sm text-gray-500 mb-3 flex items-center justify-between">
                   <span>{new Date(blog.date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
@@ -40,14 +50,17 @@ export default function BlogListingPage() {
                 <h2 className="text-xl font-bold mb-3 text-gray-900 line-clamp-2 hover:text-blue-600 transition-colors">
                   {blog.title}
                 </h2>
-                <p className="text-gray-600 mb-6 line-clamp-3 flex-grow">
+                <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">
                   {blog.excerpt}
                 </p>
-                <div className="mt-auto flex items-center text-blue-600 font-semibold text-sm group">
-                  Read More
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                <div className="flex items-center justify-between mt-auto">
+                  <div className="flex items-center text-blue-600 font-semibold text-sm group">
+                    Read More
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                  <span className="text-xs text-gray-400 font-medium">{blog.readTime}</span>
                 </div>
               </div>
             </Link>
