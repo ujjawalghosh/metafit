@@ -1,6 +1,7 @@
 "use client"
 import { openModal } from "@/store/modalSlice";
 import { useAppDispatch } from "@/store/store";
+import Link from "next/link";
 
 export default function Footer() {
   const dispatch = useAppDispatch();
@@ -11,35 +12,36 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-gray-400">Popular</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><a href="/weight-loss/ozempic" className="hover:text-gray-300">Weight Loss</a></li>
-              <li><a href="/weight-loss/ozempic" className="hover:text-gray-300">Ozempic</a></li>
+              <li><Link href="/weight-loss/ozempic" className="hover:text-gray-300">Weight Loss</Link></li>
+              <li><Link href="/weight-loss/ozempic" className="hover:text-gray-300">Ozempic</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold mb-6 text-gray-400">About MetaFit</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><a href="#" className="hover:text-gray-300">Founders letter</a></li>
-              <li><a href="#" className="hover:text-gray-300">Careers</a></li>
-              <li><a href="#" className="hover:text-gray-300">Press</a></li>
-              <li><a href="/blog" className="hover:text-gray-300">Blog</a></li>
+              <li><Link href="/founders-letter" className="hover:text-gray-300">Founders letter</Link></li>
+              <li><Link href="/careers" className="hover:text-gray-300">Careers</Link></li>
+              <li><Link href="/press" className="hover:text-gray-300">Press</Link></li>
+              <li><Link href="/blog" className="hover:text-gray-300">Blog</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold mb-6 text-gray-400">Support</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><a href="#contact" onClick={() =>
-                              dispatch(openModal({ modalType: "ContactUsForm" as any }))
-                            } className="hover:text-gray-300">Contact us</a></li>
-              <li><a href="/faq" className="hover:text-gray-300">FAQ</a></li>
-              {/* <li><a href="/pricing" className="hover:text-gray-300">Pricing</a></li> */}
+              <li><a href="#contact" onClick={(e) => {
+                              e.preventDefault();
+                              dispatch(openModal({ modalType: "ContactUsForm" as any }));
+                            }} className="hover:text-gray-300 cursor-pointer">Contact us</a></li>
+              <li><Link href="/faq" className="hover:text-gray-300">FAQ</Link></li>
+              {/* <li><Link href="/pricing" className="hover:text-gray-300">Pricing</Link></li> */}
             </ul>
           </div>
           <div>
             <h4 className="font-bold mb-6 text-gray-400">Legal</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><a href="/terms-of-use" className="hover:text-gray-300">Terms of Use</a></li>
-              <li><a href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</a></li>
-              <li><a href="/consumer-health-data" className="hover:text-gray-300">Consumer Health Data</a></li>
+              <li><Link href="/terms-of-use" className="hover:text-gray-300">Terms of Use</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link></li>
+              <li><Link href="/consumer-health-data" className="hover:text-gray-300">Consumer Health Data</Link></li>
             </ul>
           </div>
         </div>
