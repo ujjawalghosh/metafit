@@ -11,7 +11,8 @@ export default function Navbar() {
   const navLinks = [
     { name: 'How It Works', href: '/#how-it-works' },
     { name: 'Doctors', href: '/#doctors' },
-    { name: 'Testimonials', href: '/#testimonials' }
+    { name: 'Testimonials', href: '/#testimonials' },
+    { name: 'Blog', href: '/blog' }
   ];
 
   return (
