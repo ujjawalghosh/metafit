@@ -9,8 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog',
     '/get-started',
     '/faq',
+    '/learn-more',
     '/pricing',
     '/login',
+    '/contact-us',
     '/privacy-policy',
     '/terms-of-use',
     '/consumer-health-data'

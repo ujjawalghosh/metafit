@@ -4,6 +4,8 @@ import { blogs } from "@/lib/blog-data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import BlogCard from "@/components/blog/BlogCard";
+import Navbar from "@/components/nav/Navbar";
+import Footer from "@/components/nav/Footer";
 
 export function generateStaticParams() {
   return blogs.map((post) => ({ slug: post.slug }));
@@ -23,6 +25,7 @@ export default async function BlogPostPage({
 
   return (
     <main className="min-h-screen bg-gray-50">
+      <Navbar />
       {/* Hero */}
       <div className="relative h-80 md:h-[480px] overflow-hidden">
         <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" />
@@ -114,6 +117,7 @@ export default async function BlogPostPage({
           </div>
         </section>
       )}
+      <Footer />
     </main>
   );
 }

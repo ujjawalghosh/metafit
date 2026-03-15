@@ -2,8 +2,6 @@
 import React from "react";
 import { useAppSelector } from '@/store/store';
 
-// Company Modals
-import ContactUsForm from "@/components/support/ContactForm";
 
 // Define a general type for props that any modal might accept
 // Ideally, each modal would have its own props interface and modalProps would be a discriminated union
@@ -21,7 +19,6 @@ interface ModalStateInStore {
 type ModalLookupType = Record<string, React.ComponentType<AnyModalProps>>;
 
 const modalLookup: ModalLookupType = {
-  ContactUsForm,
   // Add other modals here as they are created and typed
 };
 

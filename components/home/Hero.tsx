@@ -68,7 +68,7 @@ export default function Hero() {
           </div>
 
           {/* Action Button (Optional) */}
-          <button onClick={() => { document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' }) }} className="mt-4 px-8 py-3.5 bg-white/25 hover:bg-white/40 text-black font-bold uppercase tracking-widest text-sm rounded-full transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl active:scale-95 border border-white/20">
+          <button onClick={() => { router.push('/learn-more') }} className="mt-4 px-8 py-3.5 cursor-pointer bg-white/25 hover:bg-white/40 text-black font-bold uppercase tracking-widest text-sm rounded-full transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl active:scale-95 border border-white/20">
             Learn More
           </button>
         </div>
