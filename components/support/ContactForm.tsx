@@ -214,7 +214,7 @@ export default function ContactUsPage() {
                       type="text"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 9999999999"
                       className={inputClass(false)}
                     />
                   </Field>

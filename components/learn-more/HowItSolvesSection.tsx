@@ -23,7 +23,7 @@ const features: Feature[] = [
       { icon: BarChart2, label: "Tracks progress in real-time" },
       { icon: Activity, label: "Provides personalized insights" },
     ],
-    image: "/assets/feature-ai-coach.jpg",
+    image: "/assets/feature-ai-coach.png",
     imageAlt: "AI Health Coach",
   },
   {
@@ -48,7 +48,7 @@ const features: Feature[] = [
       { icon: Activity, label: "Adaptive fitness plans" },
       { icon: BarChart2, label: "Progress tracking" },
     ],
-    image: "/assets/feature-exercise.jpg",
+    image: "/assets/feature-exercise.png",
     imageAlt: "Exercise & Muscle Preservation",
   },
   {
@@ -79,13 +79,10 @@ export default function HowItSolvesSection() {
         <div className="space-y-24">
           {features.map(({ icon: Icon, title, desc, bullets, image, imageAlt, reverse }) => (
             <div key={title}>
-              <div
-                className={`grid lg:grid-cols-2 gap-10 items-center ${
-                  reverse ? "lg:flex-row-reverse" : ""
-                }`}
-              >
+              <div className={`grid lg:grid-cols-2 gap-10 items-center`}>
+
                 {/* Text */}
-                <div className={`space-y-5 ${reverse ? "lg:order-2" : ""}`}>
+                <div className={`space-y-5 ${reverse ? "lg:order-2" : "lg:order-1"}`}>
                   <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center">
                     <Icon className="w-8 h-8 text-green-600" />
                   </div>
@@ -105,21 +102,21 @@ export default function HowItSolvesSection() {
                   </div>
                 </div>
 
-                {/* Image */}
+                {/* Image — fixed height container */}
                 <div
-                  className={`rounded-2xl overflow-hidden min-h-[280px] ${
-                    reverse ? "lg:order-1" : ""
+                  className={`relative w-full h-[280px] md:h-[340px] lg:h-[380px] rounded-2xl overflow-hidden ${
+                    reverse ? "lg:order-1" : "lg:order-2"
                   }`}
                 >
                   <Image
                     src={image}
                     alt={imageAlt}
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover rounded-2xl"
+                    fill
+                    className="object-contain"
                     loading="lazy"
                   />
                 </div>
+
               </div>
             </div>
           ))}

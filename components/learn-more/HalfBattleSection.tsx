@@ -25,7 +25,7 @@ const cards = [
 
 export default function HalfBattleSection() {
   return (
-    <section className="py-20 md:py-28 px-6 md:px-8">
+    <section className="py-16 md:py-20 px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center space-y-6 mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight">

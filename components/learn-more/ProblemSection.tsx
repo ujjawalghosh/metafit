@@ -19,9 +19,9 @@ export default function ProblemSection() {
   return (
     <section className="py-8 md:py-12 px-6 md:px-8 pt-4 md:pt-8">
       <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left */}
-          <div className="space-y-8">
+          <div className="space-y-9">
             <span className="inline-block px-4 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-medium tracking-wide">
               The Real Problem
             </span>
