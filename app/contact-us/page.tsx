@@ -5,6 +5,9 @@ import ContactUsPage from "@/components/support/ContactForm";
 export const metadata = {
     title: "Contact Us – MetaFit",
     description: "Get in touch with the MetaFit team. We're here to help with any questions about your weight loss journey.",
+    alternates: {
+        canonical: '/contact-us',
+    },
 };
 
 export default function ContactPage() {

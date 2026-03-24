@@ -5,6 +5,9 @@ import Footer from '@/components/nav/Footer';
 export const metadata: Metadata = {
   title: "Careers | MetaFit",
   description: "Join MetaFit and help us make effective weight loss accessible. View open positions.",
+  alternates: {
+    canonical: '/careers',
+  },
 };
 
 export default function CareersPage() {

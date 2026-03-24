@@ -6,9 +6,53 @@ import Link from "next/link";
 import BlogCard from "@/components/blog/BlogCard";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/nav/Footer";
+import { Metadata } from "next";
 
 export function generateStaticParams() {
   return blogs.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogs.find((b) => b.slug === slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url: `/blog/${post.slug}`,
+      images: [
+        {
+          url: post.imageUrl,
+          width: 800,
+          height: 600,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.imageUrl],
+    },
+  };
 }
 
 export default async function BlogPostPage({

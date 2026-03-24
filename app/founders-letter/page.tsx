@@ -5,6 +5,9 @@ import Footer from '@/components/nav/Footer';
 export const metadata: Metadata = {
   title: "Founder's Letter | MetaFit",
   description: "A message from the founders of MetaFit about our mission to make weight loss accessible and effective.",
+  alternates: {
+    canonical: '/founders-letter',
+  },
 };
 
 export default function FoundersLetterPage() {

@@ -5,6 +5,9 @@ import Footer from '@/components/nav/Footer';
 export const metadata: Metadata = {
   title: "Press | MetaFit",
   description: "Press and media resources for MetaFit. Contact us for media inquiries.",
+  alternates: {
+    canonical: '/press',
+  },
 };
 
 export default function PressPage() {

@@ -6,6 +6,9 @@ export const metadata = {
   title: "FAQs – MetaFit",
   description:
     "Find answers to common questions about MetaFit, GLP-1 medications, weight loss programs, side effects, and how our platform works.",
+  alternates: {
+    canonical: '/faq',
+  },
 };
 
 export default function FAQ() {
