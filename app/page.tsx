@@ -12,6 +12,9 @@ import FeaturesSection from '@/components/about/MetaFitInfoSection';
 export const metadata: Metadata = {
   title: 'MetaFit | Weight loss',
   description: 'MetaFit is a direct-to-patient healthcare company providing high-quality, affordable healthcare without the need for insurance.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function Home() {
