@@ -6,6 +6,9 @@ import Footer from '@/components/nav/Footer';
 export const metadata: Metadata = {
   title: 'Terms & Conditions | MetaFit',
   description: 'Terms and Conditions of Use for MetaFit services and platform.',
+  alternates: {
+    canonical: '/terms-of-use',
+  },
 };
 
 export default function TermsPage() {

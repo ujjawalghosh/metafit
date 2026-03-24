@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "MetaFit – The OS for GLP-1 Weight Loss",
   description:
     "MetaFit helps GLP-1 medication users maximize results with AI-powered nutrition, exercise, and doctor support.",
+  alternates: {
+    canonical: '/learn-more',
+  },
 };
 
 export default function Home() {

@@ -5,6 +5,9 @@ import Footer from '@/components/nav/Footer';
 export const metadata: Metadata = {
   title: 'Consumer Health Data Privacy Policy | MetaFit',
   description: 'Policy regarding the collection, use, and protection of consumer health data at MetaFit.',
+  alternates: {
+    canonical: '/consumer-health-data',
+  },
 };
 
 export default function ConsumerHealthPrivacyPage() {

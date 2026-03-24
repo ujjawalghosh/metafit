@@ -5,6 +5,9 @@ import Footer from '@/components/nav/Footer';
 export const metadata: Metadata = {
   title: 'Privacy Policy | MetaFit',
   description: 'Privacy Policy describing how MetaFit collects, uses, and protects your personal and health information.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

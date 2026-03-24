@@ -2,6 +2,15 @@ import { blogs } from "@/lib/blog-data";
 import BlogCard from "@/components/blog/BlogCard";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/nav/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | MetaFit",
+  description: "Science-Backed Insights for Your Weight Loss Journey",
+  alternates: {
+    canonical: "/blog",
+  },
+};
 
 export default function BlogPage() {
   const [featured, ...rest] = blogs;
