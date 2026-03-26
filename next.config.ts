@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'imgctf--assets.ro.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
 };

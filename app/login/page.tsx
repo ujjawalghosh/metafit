@@ -4,9 +4,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Login | MetaFit',
   description: 'Log in to your MetaFit account',
-  alternates: {
-    canonical: '/login',
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function QuizPage() {

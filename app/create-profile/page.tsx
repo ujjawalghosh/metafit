@@ -4,9 +4,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Create Profile | MetaFit",
   description: "Create your MetaFit profile",
-  alternates: {
-    canonical: "/create-profile",
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function CreateProfilePage() {

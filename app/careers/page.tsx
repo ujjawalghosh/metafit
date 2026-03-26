@@ -4,9 +4,29 @@ import Footer from '@/components/nav/Footer';
 
 export const metadata: Metadata = {
   title: "Careers | MetaFit",
-  description: "Join MetaFit and help us make effective weight loss accessible. View open positions.",
+  description: "Join MetaFit and help us make effective weight loss accessible to every Indian. View open positions and learn about our mission.",
   alternates: {
     canonical: '/careers',
+  },
+  openGraph: {
+    title: "Careers | MetaFit",
+    description: "Join MetaFit and help us make effective weight loss accessible to every Indian. View open positions and learn about our mission.",
+    url: "/careers",
+    type: "website",
+    images: [
+      {
+        url: "/assets/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "Careers at MetaFit",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Careers | MetaFit",
+    description: "Join MetaFit and help us make effective weight loss accessible to every Indian. View open positions and learn about our mission.",
+    images: ["/assets/og-default.png"],
   },
 };
 

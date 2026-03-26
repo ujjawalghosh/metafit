@@ -3,12 +3,33 @@ import BlogCard from "@/components/blog/BlogCard";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/nav/Footer";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Blog | MetaFit",
-  description: "Science-Backed Insights for Your Weight Loss Journey",
+  title: "MetaFit Health Blog | Weight Loss & GLP-1 Insights for India",
+  description: "Science-backed insights on GLP-1 medication, Indian diet, PCOS, and sustainable weight loss — from MetaFit's medical team.",
   alternates: {
     canonical: "/blog",
+  },
+  openGraph: {
+    title: "MetaFit Health Blog | Weight Loss & GLP-1 Insights for India",
+    description: "Science-backed insights on GLP-1 medication, Indian diet, PCOS, and sustainable weight loss — from MetaFit's medical team.",
+    url: "/blog",
+    type: "website",
+    images: [
+      {
+        url: "/assets/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "MetaFit Health Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MetaFit Health Blog | Weight Loss & GLP-1 Insights for India",
+    description: "Science-backed insights on GLP-1 medication, Indian diet, PCOS, and sustainable weight loss — from MetaFit's medical team.",
+    images: ["/assets/og-default.png"],
   },
 };
 
@@ -41,10 +62,13 @@ export default function BlogPage() {
           <a href={`/blog/${featured.slug}`} className="group block">
             <div className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white hover:shadow-2xl transition-shadow duration-300">
               <div className="relative overflow-hidden h-72 md:h-auto">
-                <img
+                <Image
                   src={featured.imageUrl}
                   alt={featured.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
               </div>

@@ -3,10 +3,30 @@ import Navbar from '@/components/nav/Navbar';
 import Footer from '@/components/nav/Footer';
 
 export const metadata: Metadata = {
-  title: "Press | MetaFit",
-  description: "Press and media resources for MetaFit. Contact us for media inquiries.",
+  title: "Press & Media | MetaFit",
+  description: "Press and media resources for MetaFit. Contact our communications team for interview requests, statements, and media inquiries.",
   alternates: {
     canonical: '/press',
+  },
+  openGraph: {
+    title: "Press & Media | MetaFit",
+    description: "Press and media resources for MetaFit. Contact our communications team for interview requests, statements, and media inquiries.",
+    url: "/press",
+    type: "website",
+    images: [
+      {
+        url: "/assets/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "MetaFit Press & Media",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Press & Media | MetaFit",
+    description: "Press and media resources for MetaFit. Contact our communications team for interview requests, statements, and media inquiries.",
+    images: ["/assets/og-default.png"],
   },
 };
 

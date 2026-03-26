@@ -10,10 +10,33 @@ import { Metadata } from 'next';
 import FeaturesSection from '@/components/about/MetaFitInfoSection';
 
 export const metadata: Metadata = {
-  title: 'MetaFit | Weight loss',
-  description: 'MetaFit is a direct-to-patient healthcare company providing high-quality, affordable healthcare without the need for insurance.',
+  title: 'MetaFit | Medical Weight Loss in India',
+  description:
+    'MetaFit offers doctor-prescribed GLP-1 weight loss programs — personalized, affordable, and backed by clinical science. Start your journey today.',
   alternates: {
     canonical: '/',
+  },
+  openGraph: {
+    title: 'MetaFit | Medical Weight Loss in India',
+    description:
+      'Doctor-prescribed GLP-1 programs personalized for the Indian body. Affordable, science-backed weight loss without insurance hassles.',
+    url: '/',
+    type: 'website',
+    images: [
+      {
+        url: '/assets/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'MetaFit — Medical Weight Loss in India',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MetaFit | Medical Weight Loss in India',
+    description:
+      'Doctor-prescribed GLP-1 programs personalized for the Indian body. Affordable, science-backed weight loss without insurance hassles.',
+    images: ['/assets/og-default.png'],
   },
 };
 

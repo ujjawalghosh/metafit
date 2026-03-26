@@ -8,6 +8,26 @@ export const metadata = {
     alternates: {
         canonical: '/contact-us',
     },
+    openGraph: {
+        title: "Contact Us – MetaFit",
+        description: "Get in touch with the MetaFit team. We're here to help with any questions about your weight loss journey.",
+        url: "/contact-us",
+        type: "website",
+        images: [
+            {
+                url: "/assets/og-default.png",
+                width: 1200,
+                height: 630,
+                alt: "Contact MetaFit",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Contact Us – MetaFit",
+        description: "Get in touch with the MetaFit team. We're here to help with any questions about your weight loss journey.",
+        images: ["/assets/og-default.png"],
+    },
 };
 
 export default function ContactPage() {

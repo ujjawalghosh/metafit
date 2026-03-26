@@ -7,6 +7,7 @@ import BlogCard from "@/components/blog/BlogCard";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/nav/Footer";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return blogs.map((post) => ({ slug: post.slug }));
@@ -70,9 +71,36 @@ export default async function BlogPostPage({
   return (
     <main className="min-h-screen bg-gray-50">
       <Navbar />
+      {/* Article JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            image: post.imageUrl,
+            datePublished: post.date,
+            author: {
+              '@type': 'Person',
+              name: post.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'MetaFit',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://www.joinmeta.fit/logo.png',
+              },
+            },
+            url: `https://www.joinmeta.fit/blog/${post.slug}`,
+          }),
+        }}
+      />
       {/* Hero */}
       <div className="relative h-80 md:h-[480px] overflow-hidden">
-        <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" />
+        <Image src={post.imageUrl} alt={post.title} fill sizes="100vw" className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14 max-w-4xl mx-auto">
           <Link

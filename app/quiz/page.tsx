@@ -5,9 +5,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Quiz | MetaFit',
   description: 'Take the MetaFit Quiz',
-  alternates: {
-    canonical: '/quiz',
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function QuizPage() {

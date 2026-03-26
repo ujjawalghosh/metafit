@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/dashboard/'],
+      disallow: ['/api/', '/dashboard/', '/login', '/quiz', '/create-profile'],
     },
     sitemap: 'https://www.joinmeta.fit/sitemap.xml',
   };

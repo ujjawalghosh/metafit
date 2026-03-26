@@ -16,6 +16,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/learn-more',
   },
+  openGraph: {
+    title: "MetaFit – The OS for GLP-1 Weight Loss",
+    description:
+      "MetaFit helps GLP-1 medication users maximize results with AI-powered nutrition, exercise, and doctor support.",
+    url: "/learn-more",
+    type: "website",
+    images: [
+      {
+        url: "/assets/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "MetaFit – How It Works",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MetaFit – The OS for GLP-1 Weight Loss",
+    description:
+      "MetaFit helps GLP-1 medication users maximize results with AI-powered nutrition, exercise, and doctor support.",
+    images: ["/assets/og-default.png"],
+  },
 };
 
 export default function Home() {

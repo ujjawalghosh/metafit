@@ -4,9 +4,29 @@ import Footer from '@/components/nav/Footer';
 
 export const metadata: Metadata = {
   title: "Founder's Letter | MetaFit",
-  description: "A message from the founders of MetaFit about our mission to make weight loss accessible and effective.",
+  description: "A message from the founders of MetaFit about our mission to make science-backed weight loss accessible and effective for every Indian.",
   alternates: {
     canonical: '/founders-letter',
+  },
+  openGraph: {
+    title: "Founder's Letter | MetaFit",
+    description: "A message from the founders of MetaFit about our mission to make science-backed weight loss accessible and effective for every Indian.",
+    url: "/founders-letter",
+    type: "article",
+    images: [
+      {
+        url: "/assets/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "Founder's Letter – MetaFit",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Founder's Letter | MetaFit",
+    description: "A message from the founders of MetaFit about our mission to make science-backed weight loss accessible and effective for every Indian.",
+    images: ["/assets/og-default.png"],
   },
 };
 
