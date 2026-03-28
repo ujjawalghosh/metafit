@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
+import Image from "next/image";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
@@ -7,10 +8,12 @@ export default function BlogCard({ post }: { post: BlogPost }) {
       <article className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
         {/* Image */}
         <div className="relative overflow-hidden h-52">
-          <img
+          <Image
             src={post.imageUrl}
             alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           <span className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">

@@ -49,9 +49,11 @@ export default function Hero() {
 
         {/* 2. Banner Left (Image) */}
         <div className="relative z-20 flex-shrink-0 w-full  lg:mx-8 lg:w-[200px] flex justify-center">
-          <img
+          <Image
             src="/assets/app_screenshot.png"
-            alt="App Screenshot"
+            alt="MetaFit App Screenshot"
+            width={400}
+            height={800}
             className="w-[250px] lg:w-full h-auto rounded-[20px] object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:rotate-2 group-hover:-translate-y-2 drop-shadow-2xl"
           />
         </div>
@@ -60,7 +62,7 @@ export default function Hero() {
         <div className="relative z-20 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
           <div className="space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-[48px] font-extrabold text-white leading-[1.1] tracking-tight drop-shadow-sm">
-              Simplifying weightloss journey with AI <br/> and GLP-1 Medication
+              Doctor-Prescribed GLP-1 <br/> Medical Weight Loss in India
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-[#1a1a1a] font-normal max-w-[1000px] leading-relaxed">
               AI-powered weight loss with personalized insights, real-time progress tracking, and support from doctors, nutritionists, and fitness coaches.

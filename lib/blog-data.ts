@@ -9,7 +9,12 @@ export interface BlogPost {
   readTime: string;
 }
 
-export const blogs: BlogPost[] = [
+import { newBlogs1 } from "./blog-data-new-1";
+import { newBlogs2 } from "./blog-data-new-2";
+import { newBlogs3 } from "./blog-data-new-3";
+import { newBlogs4 } from "./blog-data-new-4";
+
+const originalBlogs: BlogPost[] = [
   {
     title: "Understanding GLP-1: The Future of Weight Loss in India",
     slug: "understanding-glp-1-weight-loss-india",
@@ -612,4 +617,12 @@ export const blogs: BlogPost[] = [
     imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800",
     readTime: "7 min read"
   }
+];
+
+export const blogs: BlogPost[] = [
+  ...originalBlogs,
+  ...newBlogs1,
+  ...newBlogs2,
+  ...newBlogs3,
+  ...newBlogs4,
 ];
