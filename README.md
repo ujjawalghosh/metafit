@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MetaFit Web App
 
-## Getting Started
+A Next.js application with backend APIs for handling **Contact** and **Lead** form submissions.  
+This project uses **MongoDB Atlas + Mongoose** for database operations (migrated from Prisma/PostgreSQL).
 
-First, run the development server:
+---
 
+## 🚀 Getting Started
+
+### 1. Clone the repository
 ```bash
+git clone https://github.com/your-username/metafit-web-app.git
+cd metafit-web-app
+
+2. Install dependencies
+
+npm install
+# or
+yarn install
+# or
+pnpm install
+
+3. Environment variables
+
+Create a .env file in the root directory with the following values:
+MONGO_URL="mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority"
+JWT_SECRET="your-strong-secret-key"
+PORT=3000
+
+
+⚠️ Make sure to also set these variables in your Vercel dashboard when deploying.
+
+4. Run the development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📂 Project Structure
+- lib/db.ts → MongoDB connection setup using Mongoose
+- models/Contact.ts → Mongoose schema for Contact form submissions
+- models/Lead.ts → Mongoose schema for Lead form submissions
+- app/api/contact/route.ts → API route to handle Contact form POST requests
+- app/api/lead/route.ts → API route to handle Lead form POST requests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🛠️ Tech Stack
+- Frontend: Next.js (App Router)
+- Backend: Node.js + Mongoose
+- Database: MongoDB Atlas
+- Deployment: Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📬 API Endpoints
+Contact Form
+- POST /api/contact
+Saves a new contact submission to MongoDB.
+Lead Form
+- POST /api/lead
+Saves a new lead submission to MongoDB.
 
-## Learn More
+🧪 Testing
+You can test the API routes using Postman or cURL:
+# Contact form
+curl -X POST http://localhost:3000/api/contact \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","email":"john@example.com","details":"Interested in services"}'
 
-To learn more about Next.js, take a look at the following resources:
+# Lead form
+curl -X POST http://localhost:3000/api/lead \
+  -H "Content-Type: application/json" \
+  -d '{"firstName":"Jane","lastName":"Smith","email":"jane@example.com","phone":"1234567890","gender":"Female","weightGoal":"Lose 5kg"}'
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📖 Learn More
+- Next.js Documentation
+- Mongoose Documentation
+- MongoDB Atlas
 
-## Deploy on Vercel
+🚀 Deployment
+The easiest way to deploy your Next.js app is via Vercel.
+Make sure to set environment variables (MONGO_URL, JWT_SECRET, PORT) in the Vercel dashboard.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

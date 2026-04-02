@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import connectDB from '@/lib/db';
+import Contact from '@/models/Contact';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 
@@ -30,7 +31,6 @@ export async function POST(request: Request) {
         );
       }
 
-      // 50MB limit is already checked on frontend, but good to check here too
       if (file.size > 50 * 1024 * 1024) {
         return NextResponse.json(
           { success: false, error: 'File too large. Maximum size is 50MB.' },
@@ -41,11 +41,9 @@ export async function POST(request: Request) {
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-      // Ensure uploads directory exists
       const uploadDir = path.join(process.cwd(), 'public/uploads');
       await mkdir(uploadDir, { recursive: true });
 
-      // Sanitize filename
       const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
       const fileName = `${Date.now()}-${safeName}`;
       const filePath = path.join(uploadDir, fileName);
@@ -54,22 +52,42 @@ export async function POST(request: Request) {
       fileUrl = `/uploads/${fileName}`;
     }
 
-    const submission = await prisma.contactSubmission.create({
-      data: {
+    // DUAL SAVE: JSON + MongoDB (Atlas when connected)
+    try {
+      await connectDB();
+      const mongoSubmission = await new Contact({
         name,
         email,
         phone: phone || null,
         details,
         fileUrl,
-      },
-    });
+      }).save();
+      console.log('✅ MongoDB Atlas saved');
+    } catch (dbError) {
+      console.log('⚠️ MongoDB failed (network), using JSON');
+    }
+
+    const contacts = await import('fs/promises').then(fs => fs.readFile('data/contacts.json', 'utf8')).then(JSON.parse).catch(() => []);
+
+    const submission = {
+      id: Date.now().toString(),
+      name,
+      email,
+      phone: phone || null,
+      details,
+      fileUrl,
+      createdAt: new Date().toISOString(),
+    };
+    contacts.push(submission);
+    await import('fs/promises').then(fs => fs.writeFile('data/contacts.json', JSON.stringify(contacts, null, 2)));
 
     return NextResponse.json({ success: true, data: submission }, { status: 201 });
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
+      { success: false, error: error instanceof Error ? error.message : 'Internal Server Error' },
       { status: 500 }
     );
   }
 }
+
