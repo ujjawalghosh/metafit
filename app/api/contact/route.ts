@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/db';
-import Contact from '@/models/Contact';
+import { readJSON, appendToJSON, Contact } from '@/lib/jsonUtils';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 
@@ -52,36 +51,20 @@ export async function POST(request: Request) {
       fileUrl = `/uploads/${fileName}`;
     }
 
-    // DUAL SAVE: JSON + MongoDB (Atlas when connected)
-    try {
-      await connectDB();
-      const mongoSubmission = await new Contact({
-        name,
-        email,
-        phone: phone || null,
-        details,
-        fileUrl,
-      }).save();
-      console.log('✅ MongoDB Atlas saved');
-    } catch (dbError) {
-      console.log('⚠️ MongoDB failed (network), using JSON');
-    }
-
-    const contacts = await import('fs/promises').then(fs => fs.readFile('data/contacts.json', 'utf8')).then(JSON.parse).catch(() => []);
-
-    const submission = {
+    const newContact: Contact = {
       id: Date.now().toString(),
       name,
       email,
-      phone: phone || null,
+      phone: phone ?? undefined,
       details,
-      fileUrl,
+      fileUrl: fileUrl ?? undefined,
       createdAt: new Date().toISOString(),
     };
-    contacts.push(submission);
-    await import('fs/promises').then(fs => fs.writeFile('data/contacts.json', JSON.stringify(contacts, null, 2)));
 
-    return NextResponse.json({ success: true, data: submission }, { status: 201 });
+    await appendToJSON<Contact>('contacts.json', newContact);
+    console.log('✅ Contact saved to JSON:', newContact.id);
+
+    return NextResponse.json({ success: true, data: newContact }, { status: 201 });
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return NextResponse.json(

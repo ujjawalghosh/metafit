@@ -1,8 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
-
-const LEADS_FILE = path.join(process.cwd(), 'data/leads.json');
+import { appendToJSON, Lead } from '@/lib/jsonUtils';
 
 export async function POST(request: Request) {
   try {
@@ -16,15 +13,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Read existing leads
-    let leads = [];
-    try {
-      const data = await fs.readFile(LEADS_FILE, 'utf8');
-      leads = JSON.parse(data);
-    } catch {}
-
-    // Create new lead
-    const newLead = {
+    const newLead: Lead = {
       id: Date.now().toString(),
       firstName,
       lastName,
@@ -35,11 +24,10 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
     };
 
-    leads.unshift(newLead); // Newest first
-    
-    await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2));
+    await appendToJSON<Lead>('leads.json', newLead);
 
-    console.log('✅ Lead saved:', newLead.id);
+    console.log('✅ Lead saved to JSON:', newLead.id);
+
     return NextResponse.json(
       { success: true, message: 'Lead captured successfully', data: newLead },
       { status: 201 }

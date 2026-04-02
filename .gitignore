@@ -46,6 +46,9 @@ next-env.d.ts
 /public/uploads/*
 !/public/uploads/.gitkeep
 
+# data files
+data/*.json
+
 # AI Agents
 /.agents
 skills-lock.json
